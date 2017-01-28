@@ -1,4 +1,4 @@
 package ua.rd.twitter.domain;
 
-public class UserProfile {
+public class UserProfile extends AbstractEntity {
 }

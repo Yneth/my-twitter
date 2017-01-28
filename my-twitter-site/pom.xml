@@ -90,11 +90,6 @@
                             <sources>
                                 <source>${integration.test.folder}/java</source>
                             </sources>
-                            <resources>
-                                <resource>
-                                    <directory>${integration.test.folder}/resources</directory>
-                                </resource>
-                            </resources>
                         </configuration>
                     </execution>
                 </executions>

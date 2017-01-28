@@ -8,6 +8,8 @@
         <groupId>ua.rd.twitter</groupId>
         <artifactId>my-twitter</artifactId>
         <version>1.0.0</version>
+
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>my-twitter-client</artifactId>

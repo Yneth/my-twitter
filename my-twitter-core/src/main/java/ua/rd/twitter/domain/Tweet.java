@@ -1,4 +1,8 @@
 package ua.rd.twitter.domain;
 
-public class Tweet {
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+public class Tweet extends AbstractEntity {
+
 }

@@ -1,0 +1,1 @@
+package ua.rd.twitter.web.dto;
