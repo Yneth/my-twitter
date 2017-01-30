@@ -1,4 +1,19 @@
 package ua.rd.twitter.domain;
 
-public class User extends AbstractEntity {
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Getter
+@Setter
+@EqualsAndHashCode(callSuper = false, exclude = {"authorities"})
+public class User extends AbstractEntity<Long> {
+    private String username;
+
+    private String password;
+
+    private List<Authority> authorities = new ArrayList<>();
 }
