@@ -28,6 +28,7 @@
         <module name="my-twitter-domain" />
         <module name="my-twitter-hbm-persistence" />
         <module name="my-twitter-hibernate-persistence" />
+        <module name="my-twitter-persistence" />
         <module name="my-twitter-service" />
         <module name="my-twitter-site" />
         <module name="persistence" />
@@ -43,6 +44,7 @@
       <module name="my-twitter-domain" target="1.8" />
       <module name="my-twitter-hbm-persistence" target="1.8" />
       <module name="my-twitter-hibernate-persistence" target="1.8" />
+      <module name="my-twitter-persistence" target="1.8" />
       <module name="my-twitter-service" target="1.8" />
       <module name="my-twitter-site" target="1.8" />
       <module name="persistence" target="1.8" />

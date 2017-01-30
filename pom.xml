@@ -15,7 +15,7 @@
         <module>my-twitter-client</module>
         <module>my-twitter-site</module>
         <module>my-twitter-service</module>
-        <module>my-twitter-hbm-persistence</module>
+        <module>my-twitter-persistence</module>
     </modules>
 
     <properties>
