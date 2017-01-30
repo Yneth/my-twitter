@@ -1,9 +1,9 @@
 package ua.rd.twitter.domain;
 
-public class AuthorityTest extends AbstractEntityTest {
+public class UserTest extends AbstractEntityTest {
 
     @Override
     protected AbstractEntity<Long> create() {
-        return new Authority();
+        return new User();
     }
 }

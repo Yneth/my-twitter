@@ -18,6 +18,7 @@
         <maven.surefire.version>2.19.1</maven.surefire.version>
         <maven.failsafe.version>2.19.1</maven.failsafe.version>
         <maven.build.heper.version>1.12</maven.build.heper.version>
+
         <integration.test.folder>src/integration</integration.test.folder>
     </properties>
 
