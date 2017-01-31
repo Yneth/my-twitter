@@ -15,5 +15,7 @@ public class User extends AbstractEntity<Long> {
 
     private String password;
 
+    private UserProfile profile;
+
     private List<Authority> authorities = new ArrayList<>();
 }
