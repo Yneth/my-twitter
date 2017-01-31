@@ -9,6 +9,19 @@ import static org.junit.Assert.assertTrue;
 public class RetweetTest extends AbstractEntityTest {
 
     @Test
+    public void testFromRetweetShouldRetweetOnlyParentTweet() {
+        Tweet tweet = new Tweet();
+        User user = new User();
+
+        Retweet retweet1 = Retweet.from(tweet, user);
+        Retweet retweet2 = Retweet.from(retweet1, user);
+        Retweet retweet3 = Retweet.from(retweet2, user);
+
+        assertThat(retweet2.getTweet(), is(tweet));
+        assertThat(retweet3.getTweet(), is(tweet));
+    }
+
+    @Test
     public void testFromShouldSetCorrectly() {
         Tweet tweet = new Tweet();
         User user = new User();

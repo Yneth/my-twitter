@@ -23,4 +23,8 @@ public class Retweet extends Tweet {
         tweet.addRetweet(retweet);
         return retweet;
     }
+
+    public static Retweet from(Retweet tweet, User user) {
+        return from(tweet.getTweet(), user);
+    }
 }
