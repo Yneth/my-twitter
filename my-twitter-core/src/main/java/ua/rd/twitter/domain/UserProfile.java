@@ -6,10 +6,7 @@ import lombok.Setter;
 import ua.rd.twitter.domain.exception.AlreadyFollowingException;
 import ua.rd.twitter.domain.exception.SelfFollowException;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Getter
 @Setter
@@ -23,7 +20,7 @@ public class UserProfile extends AbstractEntity<Long> {
 
     private String langKey;
 
-    private List<Tweet> tweets = new ArrayList<>();
+    private Collection<Tweet> tweets = new ArrayList<>();
 
     private Set<UserProfile> followers = new HashSet<>();
 
