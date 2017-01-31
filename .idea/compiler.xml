@@ -22,34 +22,21 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="domain" />
         <module name="my-twitter-client" />
         <module name="my-twitter-core" />
-        <module name="my-twitter-domain" />
-        <module name="my-twitter-hbm-persistence" />
-        <module name="my-twitter-hibernate-persistence" />
         <module name="my-twitter-persistence" />
         <module name="my-twitter-service" />
         <module name="my-twitter-site" />
-        <module name="persistence" />
-        <module name="presentation" />
-        <module name="service" />
+        <module name="my-twitter" target="1.8"/>
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="domain" target="1.8" />
-      <module name="my-twitter" target="1.5" />
       <module name="my-twitter-client" target="1.8" />
       <module name="my-twitter-core" target="1.8" />
-      <module name="my-twitter-domain" target="1.8" />
-      <module name="my-twitter-hbm-persistence" target="1.8" />
-      <module name="my-twitter-hibernate-persistence" target="1.8" />
       <module name="my-twitter-persistence" target="1.8" />
       <module name="my-twitter-service" target="1.8" />
       <module name="my-twitter-site" target="1.8" />
-      <module name="persistence" target="1.8" />
-      <module name="presentation" target="1.8" />
-      <module name="service" target="1.8" />
+      <module name="my-twitter" target="1.8"/>
     </bytecodeTargetLevel>
   </component>
 </project>
