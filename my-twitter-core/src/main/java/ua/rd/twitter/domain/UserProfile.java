@@ -30,6 +30,10 @@ public class UserProfile extends AbstractEntity<Long> {
     private Set<UserProfile> following = new HashSet<>();
 
     public void follow(UserProfile that) {
+        if (this.getId() == null || that.getId() == null) {
+            // TODO: throw exception
+            return;
+        }
         if (this.getId().equals(that.getId())) {
             throw new SelfFollowException();
         }
@@ -37,5 +41,10 @@ public class UserProfile extends AbstractEntity<Long> {
             throw new AlreadyFollowingException(getId(), that.getId());
         }
         following.add(that);
+        that.addFollower(this);
+    }
+
+    private void addFollower(UserProfile follower) {
+        followers.add(follower);
     }
 }

@@ -35,6 +35,26 @@ public class UserProfileTest extends AbstractEntityTest {
         profile.follow(someOtherProfile);
     }
 
+    @Test
+    public void testFollowNonPersistentUserShouldNotBeFollowed() {
+        UserProfile toFollow = new UserProfile();
+        UserProfile follower = UserProfileTestFactory.withId(10L);
+        follower.follow(toFollow);
+
+        assertThat(toFollow.getFollowers().size(), is(0));
+        assertThat(follower.getFollowing().size(), is(0));
+    }
+
+    @Test
+    public void testNotPersistedUserFollowShouldDoNothing() {
+        UserProfile toFollow = UserProfileTestFactory.withId(10L);
+        UserProfile follower = new UserProfile();
+        follower.follow(toFollow);
+
+        assertThat(toFollow.getFollowers().size(), is(0));
+        assertThat(follower.getFollowing().size(), is(0));
+    }
+
     @Override
     protected AbstractEntity<Long> create() {
         return new UserProfile();
