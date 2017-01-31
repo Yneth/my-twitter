@@ -22,6 +22,33 @@
         <integration.test.folder>src/integration</integration.test.folder>
     </properties>
 
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <profile.id>local</profile.id>
+            </properties>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profile.id>dev</profile.id>
+            </properties>
+        </profile>
+        <profile>
+            <id>release</id>
+            <properties>
+                <profile.id>release</profile.id>
+            </properties>
+        </profile>
+        <profile>
+            <id>master</id>
+            <properties>
+                <profile.id>master</profile.id>
+            </properties>
+        </profile>
+    </profiles>
+
     <dependencies>
         <dependency>
             <groupId>ua.rd.twitter</groupId>
@@ -47,6 +74,9 @@
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources/${profile.id}/</directory>
             </resource>
         </resources>
 

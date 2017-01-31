@@ -13,9 +13,7 @@
           <element id="archive" name="my-twitter-service-1.0.0.jar">
             <element id="module-output" name="my-twitter-service" />
           </element>
-          <element id="archive" name="my-twitter-hbm-persistence-1.0.0.jar">
-            <element id="module-output" name="my-twitter-persistence" />
-          </element>
+          <element id="library" level="project" name="Maven: ua.rd.twitter:my-twitter-hbm-persistence:1.0.0" />
           <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.16.10" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.2" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.7.2" />
