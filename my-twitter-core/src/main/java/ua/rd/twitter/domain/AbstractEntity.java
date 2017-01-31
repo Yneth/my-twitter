@@ -5,6 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AbstractEntity<Id> {
-    private Id id;
+public class AbstractEntity<I> {
+    private I id;
 }
