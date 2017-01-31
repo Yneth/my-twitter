@@ -4,8 +4,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -17,5 +17,5 @@ public class User extends AbstractEntity<Long> {
 
     private UserProfile profile;
 
-    private List<Authority> authorities = new ArrayList<>();
+    private Set<Authority> authorities = new HashSet<>();
 }
