@@ -19,6 +19,8 @@ public class Retweet extends Tweet {
         Retweet retweet = new Retweet();
         retweet.setTweet(tweet);
         retweet.setOwner(user);
+
+        tweet.addRetweet(retweet);
         return retweet;
     }
 }

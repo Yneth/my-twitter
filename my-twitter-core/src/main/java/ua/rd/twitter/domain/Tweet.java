@@ -4,10 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Getter
 @Setter
@@ -19,7 +16,11 @@ public class Tweet extends AbstractEntity<Long> {
 
     private Set<Like> likes = new HashSet<>();
 
-    private List<Retweet> retweets = new ArrayList<>();
+    private Collection<Retweet> retweets = new ArrayList<>();
+
+    public void addRetweet(Retweet retweet) {
+        retweets.add(retweet);
+    }
 
     public void like(Like like) {
         likes.add(like);
