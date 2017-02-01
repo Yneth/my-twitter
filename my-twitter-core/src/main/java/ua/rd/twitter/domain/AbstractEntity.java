@@ -6,5 +6,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AbstractEntity<I> {
-    private I id;
+    protected I id;
 }
