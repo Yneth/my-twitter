@@ -70,7 +70,7 @@
             </dependency>
             <dependency>
                 <groupId>ua.rd.twitter</groupId>
-                <artifactId>my-twitter-hbm-persistence</artifactId>
+                <artifactId>my-twitter-persistence</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -81,6 +81,11 @@
             <dependency>
                 <groupId>ua.rd.twitter</groupId>
                 <artifactId>my-twitter-site</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ua.rd.twitter</groupId>
+                <artifactId>my-twitter-client</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
