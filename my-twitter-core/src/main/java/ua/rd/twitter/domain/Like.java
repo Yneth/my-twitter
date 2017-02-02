@@ -8,15 +8,13 @@ import java.util.Objects;
 
 @Getter
 @Setter
-@EqualsAndHashCode(callSuper = false)
-public class Like extends AbstractEntity<LikeId> {
-    private LikeId likeId;
-
+@EqualsAndHashCode
+public class Like {
     private Tweet tweet;
 
-    private User owner;
+    private UserProfile owner;
 
-    public static Like from(User user, Tweet tweet) {
+    public static Like from(UserProfile user, Tweet tweet) {
         Objects.requireNonNull(user, "User should not be null.");
         Objects.requireNonNull(tweet, "Tweet should not be null");
 
