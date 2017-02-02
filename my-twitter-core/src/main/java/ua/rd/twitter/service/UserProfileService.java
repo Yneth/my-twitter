@@ -8,6 +8,5 @@ public interface UserProfileService {
 
     void notifyRecipient(Tweet tweet);
 
-
     void addMentionsFor(Tweet tweet);
 }
