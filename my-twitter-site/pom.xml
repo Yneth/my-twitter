@@ -60,7 +60,7 @@
         </dependency>
         <dependency>
             <groupId>ua.rd.twitter</groupId>
-            <artifactId>my-twitter-hbm-persistence</artifactId>
+            <artifactId>my-twitter-persistence</artifactId>
         </dependency>
     </dependencies>
 

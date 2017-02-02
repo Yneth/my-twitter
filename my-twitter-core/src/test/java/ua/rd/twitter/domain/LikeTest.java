@@ -1,28 +1,10 @@
 package ua.rd.twitter.domain;
 
 import org.junit.Test;
-import ua.rd.twitter.domain.util.LikeTestFactory;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class LikeTest {
-
-    @Test
-    public void testIdShouldBeExcludedFromEquals() {
-        Like like1 = LikeTestFactory.withIds(1L, 1L);
-        Like like2 = LikeTestFactory.withIds(2L, 2L);
-
-        assertTrue(like1.equals(like2));
-    }
-
-    @Test
-    public void testIdShouldBeExcludedFromHashCode() {
-        Like like1 = LikeTestFactory.withIds(1L, 1L);
-        Like like2 = LikeTestFactory.withIds(2L, 2L);
-
-        assertEquals(like1.hashCode(), like2.hashCode());
-    }
 
     @Test
     public void testFrom() {

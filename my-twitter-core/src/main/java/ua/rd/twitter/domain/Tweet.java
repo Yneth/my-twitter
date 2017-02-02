@@ -12,8 +12,6 @@ import java.util.regex.Matcher;
 @Setter
 @EqualsAndHashCode(callSuper = false, exclude = {"likes", "retweets"})
 public class Tweet extends AbstractEntity<Long> {
-    private static final String USERNAME_REGEX = "@\\w{1,15}";
-
     private User owner;
 
     private String message;

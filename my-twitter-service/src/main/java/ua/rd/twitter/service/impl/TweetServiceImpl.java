@@ -12,7 +12,7 @@ public class TweetServiceImpl implements TweetService {
     public void addTweet(Long userId, Tweet tweet) {
         UserProfile profile = userProfileService.findById(userId);
 
-        profile.addTweet(tweet);
+        profile.getTweets().add(tweet);
 
         userProfileService.notifyRecipient(tweet);
         userProfileService.addMentionsFor(tweet);

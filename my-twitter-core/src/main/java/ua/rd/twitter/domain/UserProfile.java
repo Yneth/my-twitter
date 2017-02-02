@@ -11,7 +11,9 @@ import java.util.Set;
 
 @Getter
 @Setter
-@EqualsAndHashCode(callSuper = false, exclude = {"tweets", "followers", "following"})
+@EqualsAndHashCode(callSuper = true, exclude = {
+        "account", "tweets", "followers", "following"
+})
 public class UserProfile extends AbstractEntity<Long> {
     private User account;
 
@@ -30,28 +32,4 @@ public class UserProfile extends AbstractEntity<Long> {
     private Set<UserProfile> followers = new HashSet<>();
 
     private Set<UserProfile> following = new HashSet<>();
-
-    public void addTweet(Tweet tweet) {
-        tweets.add(tweet);
-    }
-
-    public void addFollower(UserProfile follower) {
-        followers.add(follower);
-    }
-
-    public void addFollowee(UserProfile followee) {
-        following.add(followee);
-    }
-
-    public void addMention(Tweet mention) {
-        mentions.add(mention);
-    }
-
-    public void addAllMentions(List<Tweet> newMentions) {
-        mentions.addAll(newMentions);
-    }
-
-    public void addReply(Tweet reply) {
-        replies.add(reply);
-    }
 }

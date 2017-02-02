@@ -6,7 +6,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-public class RetweetTest extends AbstractEntityTest {
+public class RetweetTest {
 
     @Test
     public void testFromRetweetShouldRetweetOnlyParentTweet() {
@@ -54,10 +54,5 @@ public class RetweetTest extends AbstractEntityTest {
     @Test(expected = NullPointerException.class)
     public void testFromArgsShouldNotBeNull() {
         Retweet.from(null, null);
-    }
-
-    @Override
-    protected AbstractEntity<Long> create() {
-        return new Retweet();
     }
 }

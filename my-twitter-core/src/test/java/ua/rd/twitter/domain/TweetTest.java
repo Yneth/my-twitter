@@ -3,12 +3,62 @@ package ua.rd.twitter.domain;
 import org.junit.Test;
 import ua.rd.twitter.domain.util.LikeTestFactory;
 
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
-public class TweetTest extends AbstractEntityTest {
+public class TweetTest {
+
+    @Test
+    public void testGetMentionedUserNamesShouldBeEmptyOnEmptyMessage() throws Exception {
+        assertTrue(new Tweet().getMentionedUserNames().isEmpty());
+    }
+
+    @Test
+    public void testGetMentionedUserNamesShouldNotAcceptReply() throws Exception {
+        String username = "@someName";
+        Tweet tweet = new Tweet();
+        tweet.setMessage(username + " sdfkjasbfbsadfkas");
+
+        assertTrue(tweet.getMentionedUserNames().isEmpty());
+    }
+
+    @Test
+    public void testGetMentionedUserNamesShouldWorkForMultipleMentions() throws Exception {
+        String mention1 = "@someName1";
+        String mention2 = "@someName2";
+        Tweet tweet = new Tweet();
+        tweet.setMessage("sdfkjasbfbsadfkas" + mention1 + mention2);
+
+        List<String> mentionedUserNames = tweet.getMentionedUserNames();
+        assertEquals(2, mentionedUserNames.size());
+        assertTrue(mentionedUserNames.contains(mention1));
+        assertTrue(mentionedUserNames.contains(mention2));
+    }
+
+    @Test
+    public void testGetMentionedUserNamesShouldGetMentionsFromReply() throws Exception {
+        String reply = "@someName";
+        String mention1 = "@someName1";
+        String mention2 = "@someName2";
+        Tweet tweet = new Tweet();
+        tweet.setMessage(reply + "sdfkjasbfbsadfkas" + mention1 + mention2);
+
+        List<String> mentionedUserNames = tweet.getMentionedUserNames();
+        assertEquals(2, mentionedUserNames.size());
+        assertTrue(mentionedUserNames.contains(mention1));
+        assertTrue(mentionedUserNames.contains(mention2));
+    }
+
+    @Test
+    public void testGetReplyRecipientShouldReturnEmptyOptionalIfNoReply() throws Exception {
+        Tweet tweet = new Tweet();
+        tweet.setMessage("some text sdfafsa");
+
+        assertFalse(tweet.getReplyRecipient().isPresent());
+    }
 
     @Test
     public void testAddRetweetShouldModifyRetweetCollection() throws Exception {
@@ -18,36 +68,6 @@ public class TweetTest extends AbstractEntityTest {
 
         assertThat(tweet.getRetweets().size(), is(1));
         assertTrue(tweet.getRetweets().contains(retweet));
-    }
-
-    @Test
-    public void getMentionedUserNames() throws Exception {
-
-    }
-
-    @Test
-    public void getReplyRecipient() throws Exception {
-
-    }
-
-    @Test
-    public void setOwner() throws Exception {
-
-    }
-
-    @Test
-    public void setMessage() throws Exception {
-
-    }
-
-    @Test
-    public void setLikes() throws Exception {
-
-    }
-
-    @Test
-    public void setRetweets() throws Exception {
-
     }
 
     @Test
@@ -89,10 +109,5 @@ public class TweetTest extends AbstractEntityTest {
         tweet.dislike(like);
 
         assertThat(tweet.getLikes().size(), is(0));
-    }
-
-    @Override
-    protected AbstractEntity<Long> create() {
-        return new Tweet();
     }
 }
