@@ -26,7 +26,7 @@ public class LikeTest {
 
     @Test
     public void testFrom() {
-        User user = new User();
+        UserProfile user = new UserProfile();
         Tweet tweet = new Tweet();
 
         Like from = Like.from(user, tweet);
@@ -42,7 +42,7 @@ public class LikeTest {
 
     @Test(expected = NullPointerException.class)
     public void testFromTweetShouldNotBeNull() {
-        Like.from(new User(), null);
+        Like.from(new UserProfile(), null);
     }
 
     @Test(expected = NullPointerException.class)
