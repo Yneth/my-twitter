@@ -17,5 +17,9 @@ public class User extends AbstractEntity<Long> {
 
     private UserProfile profile;
 
+    private String firstName;
+
+    private String lastName;
+
     private Set<Authority> authorities = new HashSet<>();
 }

@@ -17,12 +17,6 @@ import java.util.Set;
 public class UserProfile extends AbstractEntity<Long> {
     private User account;
 
-    private String firstName;
-
-    private String lastName;
-
-    private String langKey;
-
     private List<Tweet> replies = new ArrayList<>();
 
     private List<Tweet> mentions = new ArrayList<>();
