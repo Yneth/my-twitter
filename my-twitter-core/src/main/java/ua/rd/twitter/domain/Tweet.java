@@ -10,7 +10,7 @@ import java.util.regex.Matcher;
 
 @Getter
 @Setter
-@EqualsAndHashCode(callSuper = false, exclude = {"likes", "retweets"})
+@EqualsAndHashCode(callSuper = true, exclude = {"likes", "retweets"})
 public class Tweet extends AbstractEntity<Long> {
     private User owner;
 
