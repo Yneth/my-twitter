@@ -8,13 +8,17 @@ import ua.rd.twitter.service.UserProfileService;
 public class TweetServiceImpl implements TweetService {
     private UserProfileService userProfileService;
 
+    public TweetServiceImpl(UserProfileService userProfileService) {
+        this.userProfileService = userProfileService;
+    }
+
     @Override
-    public void addTweet(Long userId, Tweet tweet) {
+    public void addTweet(long userId, Tweet tweet) {
         UserProfile profile = userProfileService.findById(userId);
 
         profile.getTweets().add(tweet);
 
         userProfileService.notifyRecipient(tweet);
-        userProfileService.addMentionsFor(tweet);
+        userProfileService.notifyMentionedUsers(tweet);
     }
 }
