@@ -1,21 +1,29 @@
 package ua.rd.twitter.service.impl;
 
+import ua.rd.twitter.domain.Tweet;
 import ua.rd.twitter.domain.UserProfile;
 import ua.rd.twitter.respository.UserProfileRepository;
-import ua.rd.twitter.service.UserService;
+import ua.rd.twitter.service.UserProfileService;
 import ua.rd.twitter.service.exception.UserNotFoundException;
 
-public class UserServiceImpl implements UserService {
+import java.util.List;
+
+public class UserProfileServiceImpl implements UserProfileService {
     private UserProfileRepository userProfileRepository;
 
-    public UserServiceImpl(UserProfileRepository userProfileRepository) {
+    public UserProfileServiceImpl(UserProfileRepository userProfileRepository) {
         this.userProfileRepository = userProfileRepository;
     }
 
     @Override
-    public UserProfile findById(Long id) {
+    public UserProfile findById(long id) {
         return userProfileRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
+    }
+
+    @Override
+    public List<Tweet> getUserTweets(long userId) {
+        return null;
     }
 
     @Override
@@ -42,5 +50,15 @@ public class UserServiceImpl implements UserService {
 
         follower.getFollowing().remove(followee);
         followee.getFollowers().remove(follower);
+    }
+
+    @Override
+    public void notifyRecipient(Tweet tweet) {
+
+    }
+
+    @Override
+    public void notifyMentionedUsers(Tweet tweet) {
+
     }
 }

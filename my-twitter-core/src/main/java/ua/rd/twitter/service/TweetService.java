@@ -4,4 +4,6 @@ import ua.rd.twitter.domain.Tweet;
 
 public interface TweetService {
     void addTweet(long userId, Tweet tweet);
+
+    Tweet findById(long tweetId);
 }

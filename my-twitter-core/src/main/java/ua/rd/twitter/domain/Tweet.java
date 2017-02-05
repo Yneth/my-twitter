@@ -20,36 +20,28 @@ public class Tweet extends AbstractEntity<Long> {
 
     private Collection<Retweet> retweets = new ArrayList<>();
 
-    public void addRetweet(Retweet retweet) {
-        retweets.add(retweet);
+    public boolean isReply() {
+        return getRecipient().isPresent();
     }
 
-    public void like(Like like) {
-        likes.add(like);
+    public Optional<UserProfile> getRecipient() {
+        Matcher matcher = Constants.USERNAME_PATTERN.matcher(message);
+        if (matcher.find() && matcher.start() == 0) {
+            Optional.of(UserProfile.fromPrefixedName(matcher.group()));
+        }
+        return Optional.empty();
     }
 
-    public void dislike(Like like) {
-        likes.remove(like);
-    }
-
-    public List<String> getMentionedUserNames() {
-        List<String> result = new ArrayList<>();
+    public List<UserProfile> getMentionedUserProfiles() {
+        List<UserProfile> result = new ArrayList<>();
         if (message != null) {
             Matcher matcher = Constants.USERNAME_PATTERN.matcher(message);
             while (matcher.find()) {
                 if (matcher.start() != 0) {
-                    result.add(matcher.group());
+                    result.add(UserProfile.fromPrefixedName(matcher.group()));
                 }
             }
         }
         return result;
-    }
-
-    public Optional<String> getReplyRecipient() {
-        Matcher matcher = Constants.USERNAME_PATTERN.matcher(message);
-        if (matcher.find() && matcher.start() == 0) {
-            Optional.of(matcher.group());
-        }
-        return Optional.empty();
     }
 }

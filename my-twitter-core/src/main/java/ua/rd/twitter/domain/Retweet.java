@@ -20,7 +20,7 @@ public class Retweet extends Tweet {
         retweet.setTweet(tweet);
         retweet.setOwner(user);
 
-        tweet.addRetweet(retweet);
+        tweet.getRetweets().add(retweet);
         return retweet;
     }
 

@@ -11,13 +11,9 @@ import java.util.Set;
 @Setter
 @EqualsAndHashCode(callSuper = true, exclude = {"profile", "authorities"})
 public class User extends AbstractEntity<Long> {
-    private String username;
+    private String login;
 
     private String password;
-
-    private String firstName;
-
-    private String lastName;
 
     private UserProfile profile;
 

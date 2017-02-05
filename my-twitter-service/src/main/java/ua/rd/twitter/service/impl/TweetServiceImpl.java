@@ -13,6 +13,11 @@ public class TweetServiceImpl implements TweetService {
     }
 
     @Override
+    public Tweet findById(long tweetId) {
+        return null;
+    }
+
+    @Override
     public void addTweet(long userId, Tweet tweet) {
         UserProfile profile = userProfileService.findById(userId);
 

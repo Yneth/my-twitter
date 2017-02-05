@@ -13,7 +13,7 @@ public class TweetTest {
 
     @Test
     public void testGetMentionedUserNamesShouldBeEmptyOnEmptyMessage() throws Exception {
-        assertTrue(new Tweet().getMentionedUserNames().isEmpty());
+        assertTrue(new Tweet().getMentionedUserProfiles().isEmpty());
     }
 
     @Test
@@ -22,7 +22,7 @@ public class TweetTest {
         Tweet tweet = new Tweet();
         tweet.setMessage(username + " sdfkjasbfbsadfkas");
 
-        assertTrue(tweet.getMentionedUserNames().isEmpty());
+        assertTrue(tweet.getMentionedUserProfiles().isEmpty());
     }
 
     @Test
@@ -32,10 +32,10 @@ public class TweetTest {
         Tweet tweet = new Tweet();
         tweet.setMessage("sdfkjasbfbsadfkas" + mention1 + mention2);
 
-        List<String> mentionedUserNames = tweet.getMentionedUserNames();
+        List<UserProfile> mentionedUserNames = tweet.getMentionedUserProfiles();
         assertEquals(2, mentionedUserNames.size());
-        assertTrue(mentionedUserNames.contains(mention1));
-        assertTrue(mentionedUserNames.contains(mention2));
+        assertTrue(mentionedUserNames.contains(UserProfile.fromPrefixedName(mention1)));
+        assertTrue(mentionedUserNames.contains(UserProfile.fromPrefixedName(mention2)));
     }
 
     @Test
@@ -46,10 +46,10 @@ public class TweetTest {
         Tweet tweet = new Tweet();
         tweet.setMessage(reply + "sdfkjasbfbsadfkas" + mention1 + mention2);
 
-        List<String> mentionedUserNames = tweet.getMentionedUserNames();
+        List<UserProfile> mentionedUserNames = tweet.getMentionedUserProfiles();
         assertEquals(2, mentionedUserNames.size());
-        assertTrue(mentionedUserNames.contains(mention1));
-        assertTrue(mentionedUserNames.contains(mention2));
+        assertTrue(mentionedUserNames.contains(UserProfile.fromPrefixedName(mention1)));
+        assertTrue(mentionedUserNames.contains(UserProfile.fromPrefixedName(mention2)));
     }
 
     @Test
@@ -57,14 +57,14 @@ public class TweetTest {
         Tweet tweet = new Tweet();
         tweet.setMessage("some text sdfafsa");
 
-        assertFalse(tweet.getReplyRecipient().isPresent());
+        assertFalse(tweet.getRecipient().isPresent());
     }
 
     @Test
     public void testAddRetweetShouldModifyRetweetCollection() throws Exception {
         Tweet tweet = new Tweet();
         Retweet retweet = new Retweet();
-        tweet.addRetweet(retweet);
+        tweet.getRetweets().add(retweet);
 
         assertThat(tweet.getRetweets().size(), is(1));
         assertTrue(tweet.getRetweets().contains(retweet));
@@ -74,7 +74,7 @@ public class TweetTest {
     public void testLikeShouldBeAddedToTheLikesCollection() {
         Tweet tweet = new Tweet();
         Like like = LikeTestFactory.withIds(0L, 0L);
-        tweet.like(like);
+        tweet.getLikes().add(like);
 
         assertThat(tweet.getLikes().size(), is(1));
         assertTrue(tweet.getLikes().contains(like));
@@ -84,8 +84,8 @@ public class TweetTest {
     public void testLikeFromTheSameUserShouldNotAddNewLike() {
         Tweet tweet = new Tweet();
         Like like = LikeTestFactory.withIds(0L, 0L);
-        tweet.like(like);
-        tweet.like(like);
+        tweet.getLikes().add(like);
+        tweet.getLikes().add(like);
 
         assertThat(tweet.getLikes().size(), is(1));
         assertTrue(tweet.getLikes().contains(like));
@@ -95,8 +95,8 @@ public class TweetTest {
     public void testDislikeShouldRemoveExistingLike() {
         Tweet tweet = new Tweet();
         Like like = LikeTestFactory.withIds(0L, 0L);
-        tweet.like(like);
-        tweet.dislike(like);
+        tweet.getLikes().add(like);
+        tweet.getLikes().remove(like);
 
         assertThat(tweet.getLikes().size(), is(0));
         assertFalse(tweet.getLikes().contains(like));
@@ -106,7 +106,7 @@ public class TweetTest {
     public void testDislikeWhenNoLikesShouldDoNothing() {
         Tweet tweet = new Tweet();
         Like like = LikeTestFactory.withIds(0L, 0L);
-        tweet.dislike(like);
+        tweet.getLikes().remove(like);
 
         assertThat(tweet.getLikes().size(), is(0));
     }

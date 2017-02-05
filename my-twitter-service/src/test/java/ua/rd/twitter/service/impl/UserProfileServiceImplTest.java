@@ -7,7 +7,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import ua.rd.twitter.domain.UserProfile;
 import ua.rd.twitter.respository.UserProfileRepository;
-import ua.rd.twitter.service.UserService;
+import ua.rd.twitter.service.UserProfileService;
 
 import java.util.Optional;
 
@@ -19,15 +19,15 @@ import static org.mockito.Matchers.anyLong;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class UserServiceImplTest {
-    private UserService userService;
+public class UserProfileServiceImplTest {
+    private UserProfileService userService;
 
     @Mock
     private UserProfileRepository userProfileRepository;
 
     @Before
     public void setUp() {
-        userService = new UserServiceImpl(userProfileRepository);
+        userService = new UserProfileServiceImpl(userProfileRepository);
     }
 
     @Test
