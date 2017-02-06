@@ -14,7 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(callSuper = true, exclude = {
-        "account", "tweets", "followers", "following"
+        "replies", "mentions", "account", "tweets", "followers", "following"
 })
 public class UserProfile extends AbstractEntity<Long> {
     private User account;
