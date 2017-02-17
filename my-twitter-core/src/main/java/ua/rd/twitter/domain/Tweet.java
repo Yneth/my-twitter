@@ -5,40 +5,33 @@ import lombok.Getter;
 import lombok.Setter;
 import ua.rd.twitter.Constants;
 
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.regex.Matcher;
 
 @Getter
 @Setter
-@EqualsAndHashCode(callSuper = true, exclude = {"likes", "retweets"})
+@EqualsAndHashCode(callSuper = true, exclude = {
+        "likes", "retweets",
+})
 public class Tweet extends AbstractEntity<Long> {
-    private User owner;
+    protected LocalDateTime creationDateTime;
 
-    private String message;
+    protected User owner;
 
-    private Set<Like> likes = new HashSet<>();
+    protected String message;
 
-    private Collection<Retweet> retweets = new ArrayList<>();
+    protected Set<Like> likes = new HashSet<>();
 
-    public boolean isReply() {
-        return getRecipient().isPresent();
-    }
+    protected Collection<Retweet> retweets = new ArrayList<>();
 
-    public Optional<UserProfile> getRecipient() {
-        Matcher matcher = Constants.USERNAME_PATTERN.matcher(message);
-        if (matcher.find() && matcher.start() == 0) {
-            Optional.of(UserProfile.fromPrefixedName(matcher.group()));
-        }
-        return Optional.empty();
-    }
-
-    public List<UserProfile> getMentionedUserProfiles() {
-        List<UserProfile> result = new ArrayList<>();
+    public List<String> getMentionedUsernames() {
+        List<String> result = new ArrayList<>();
         if (message != null) {
             Matcher matcher = Constants.USERNAME_PATTERN.matcher(message);
             while (matcher.find()) {
                 if (matcher.start() != 0) {
-                    result.add(UserProfile.fromPrefixedName(matcher.group()));
+                    result.add(matcher.group());
                 }
             }
         }
