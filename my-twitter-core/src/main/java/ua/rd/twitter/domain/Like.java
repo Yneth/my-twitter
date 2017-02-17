@@ -1,13 +1,12 @@
 package ua.rd.twitter.domain;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Objects;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @EqualsAndHashCode
 public class Like {
     private Tweet tweet;
