@@ -14,16 +14,12 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(callSuper = true, exclude = {
-        "replies", "mentions", "account", "tweets", "followers", "following"
+        "account", "tweets", "followers", "following",
 })
 public class UserProfile extends AbstractEntity<Long> {
     private User account;
 
     private String username;
-
-    private List<Tweet> replies = new ArrayList<>();
-
-    private List<Tweet> mentions = new ArrayList<>();
 
     private List<Tweet> tweets = new ArrayList<>();
 
@@ -31,13 +27,11 @@ public class UserProfile extends AbstractEntity<Long> {
 
     private Set<UserProfile> following = new HashSet<>();
 
-    public static UserProfile fromPrefixedName(String str) {
-        UserProfile result = new UserProfile();
-        result.setUsername(str);
+    public UserProfile(String name) {
+        this.username = name;
         String usernamePrefix = Constants.USERNAME_PREFIX;
-        if (str.startsWith(usernamePrefix)) {
-            result.setUsername(str.substring(usernamePrefix.length()));
+        if (name.startsWith(usernamePrefix)) {
+            this.username = name.substring(usernamePrefix.length());
         }
-        return result;
     }
 }

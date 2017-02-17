@@ -9,7 +9,9 @@ import java.util.Set;
 
 @Getter
 @Setter
-@EqualsAndHashCode(callSuper = true, exclude = {"profile", "authorities"})
+@EqualsAndHashCode(callSuper = true, exclude = {
+        "profile", "authorities",
+})
 public class User extends AbstractEntity<Long> {
     private String login;
 
