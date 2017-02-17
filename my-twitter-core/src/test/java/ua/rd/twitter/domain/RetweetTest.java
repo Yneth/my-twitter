@@ -9,23 +9,10 @@ import static org.junit.Assert.assertTrue;
 public class RetweetTest {
 
     @Test
-    public void testFromRetweetShouldRetweetOnlyParentTweet() {
-        Tweet tweet = new Tweet();
-        User user = new User();
-
-        Retweet retweet1 = Retweet.from(tweet, user);
-        Retweet retweet2 = Retweet.from(retweet1, user);
-        Retweet retweet3 = Retweet.from(retweet2, user);
-
-        assertThat(retweet2.getTweet(), is(tweet));
-        assertThat(retweet3.getTweet(), is(tweet));
-    }
-
-    @Test
     public void testFromShouldSetCorrectly() {
         Tweet tweet = new Tweet();
         User user = new User();
-        Retweet from = Retweet.from(tweet, user);
+        Retweet from = new Retweet(tweet, user);
 
         assertTrue(tweet == from.getTweet());
         assertTrue(user == from.getOwner());
@@ -35,7 +22,7 @@ public class RetweetTest {
     public void testFromShouldAddRetweetToTweet() {
         Tweet tweet = new Tweet();
         User user = new User();
-        Retweet from = Retweet.from(tweet, user);
+        Retweet from = new Retweet(tweet, user);
 
         assertThat(tweet.getRetweets().size(), is(1));
         assertTrue(tweet.getRetweets().contains(from));
@@ -43,16 +30,16 @@ public class RetweetTest {
 
     @Test(expected = NullPointerException.class)
     public void testFromTweetShouldNotBeNull() {
-        Retweet.from(null, new User());
+        new Retweet(null, new User());
     }
 
     @Test(expected = NullPointerException.class)
     public void testFromUserShouldNotBeNull() {
-        Retweet.from(new Tweet(), null);
+        new Retweet(new Tweet(), null);
     }
 
     @Test(expected = NullPointerException.class)
     public void testFromArgsShouldNotBeNull() {
-        Retweet.from(null, null);
+        new Retweet(null, null);
     }
 }

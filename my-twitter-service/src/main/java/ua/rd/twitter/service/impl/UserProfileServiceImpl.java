@@ -1,5 +1,6 @@
 package ua.rd.twitter.service.impl;
 
+import ua.rd.twitter.domain.Reply;
 import ua.rd.twitter.domain.Tweet;
 import ua.rd.twitter.domain.UserProfile;
 import ua.rd.twitter.respository.UserProfileRepository;
@@ -22,8 +23,8 @@ public class UserProfileServiceImpl implements UserProfileService {
     }
 
     @Override
-    public List<Tweet> getUserTweets(long userId) {
-        return null;
+    public List<Tweet> getUserTimeLine(long userId) {
+        return findById(userId).getTweets();
     }
 
     @Override
@@ -53,12 +54,12 @@ public class UserProfileServiceImpl implements UserProfileService {
     }
 
     @Override
-    public void notifyRecipient(Tweet tweet) {
-
+    public void notifyRecipient(Reply tweet) {
     }
 
     @Override
     public void notifyMentionedUsers(Tweet tweet) {
-
+        userProfileRepository.findByUsernames(tweet.getMentionedUsernames())
+                .forEach(up -> up.getTweets().add(tweet));
     }
 }

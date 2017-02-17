@@ -13,7 +13,7 @@ public class TweetTest {
 
     @Test
     public void testGetMentionedUserNamesShouldBeEmptyOnEmptyMessage() throws Exception {
-        assertTrue(new Tweet().getMentionedUserProfiles().isEmpty());
+        assertTrue(new Tweet().getMentionedUsernames().isEmpty());
     }
 
     @Test
@@ -22,7 +22,7 @@ public class TweetTest {
         Tweet tweet = new Tweet();
         tweet.setMessage(username + " sdfkjasbfbsadfkas");
 
-        assertTrue(tweet.getMentionedUserProfiles().isEmpty());
+        assertTrue(tweet.getMentionedUsernames().isEmpty());
     }
 
     @Test
@@ -32,10 +32,10 @@ public class TweetTest {
         Tweet tweet = new Tweet();
         tweet.setMessage("sdfkjasbfbsadfkas" + mention1 + mention2);
 
-        List<UserProfile> mentionedUserNames = tweet.getMentionedUserProfiles();
+        List<String> mentionedUserNames = tweet.getMentionedUsernames();
         assertEquals(2, mentionedUserNames.size());
-        assertTrue(mentionedUserNames.contains(UserProfile.fromPrefixedName(mention1)));
-        assertTrue(mentionedUserNames.contains(UserProfile.fromPrefixedName(mention2)));
+        assertTrue(mentionedUserNames.contains(new UserProfile(mention1)));
+        assertTrue(mentionedUserNames.contains(new UserProfile(mention2)));
     }
 
     @Test
@@ -46,18 +46,10 @@ public class TweetTest {
         Tweet tweet = new Tweet();
         tweet.setMessage(reply + "sdfkjasbfbsadfkas" + mention1 + mention2);
 
-        List<UserProfile> mentionedUserNames = tweet.getMentionedUserProfiles();
+        List<String> mentionedUserNames = tweet.getMentionedUsernames();
         assertEquals(2, mentionedUserNames.size());
-        assertTrue(mentionedUserNames.contains(UserProfile.fromPrefixedName(mention1)));
-        assertTrue(mentionedUserNames.contains(UserProfile.fromPrefixedName(mention2)));
-    }
-
-    @Test
-    public void testGetReplyRecipientShouldReturnEmptyOptionalIfNoReply() throws Exception {
-        Tweet tweet = new Tweet();
-        tweet.setMessage("some text sdfafsa");
-
-        assertFalse(tweet.getRecipient().isPresent());
+        assertTrue(mentionedUserNames.contains(new UserProfile(mention1)));
+        assertTrue(mentionedUserNames.contains(new UserProfile(mention2)));
     }
 
     @Test
