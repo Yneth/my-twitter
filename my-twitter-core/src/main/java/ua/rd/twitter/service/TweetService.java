@@ -1,19 +1,20 @@
 package ua.rd.twitter.service;
 
-import ua.rd.twitter.domain.Reply;
-import ua.rd.twitter.domain.Retweet;
 import ua.rd.twitter.domain.Tweet;
+import ua.rd.twitter.service.dto.CreateReplyDTO;
+import ua.rd.twitter.service.dto.CreateRetweetDTO;
+import ua.rd.twitter.service.dto.CreateTweetDTO;
 
 public interface TweetService {
     Tweet findById(long tweetId);
 
-    void addTweet(long userId, Tweet tweet);
+    void addTweet(CreateTweetDTO tweetDTO);
 
-    void addReply(long userId, Reply reply);
+    void addRetweet(CreateRetweetDTO retweetDTO);
 
-    void addRetweet(long userId, Retweet retweet);
+    void addReply(CreateReplyDTO replyDTO);
 
-    void likeTweet(long tweetId, long userId);
+    void addLikeToTweet(long tweetId, long userId);
 
-    void unlikeTweet(long tweetId, long userId);
+    void removeLikeFromTweet(long tweetId, long userId);
 }
