@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Collection;
 import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -22,5 +24,19 @@ public class Retweet extends Tweet {
         this.setOwner(user);
 
         tweet.getRetweets().add(this);
+    }
+
+    public Retweet(Retweet retweet, User user) {
+        this(retweet.getTweet(), user);
+    }
+
+    @Override
+    public Collection<Retweet> getRetweets() {
+        return tweet.getRetweets();
+    }
+
+    @Override
+    public Set<Like> getLikes() {
+        return tweet.getLikes();
     }
 }
