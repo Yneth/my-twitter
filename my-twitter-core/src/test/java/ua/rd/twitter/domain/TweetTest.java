@@ -34,8 +34,8 @@ public class TweetTest {
 
         List<String> mentionedUserNames = tweet.getMentionedUsernames();
         assertEquals(2, mentionedUserNames.size());
-        assertTrue(mentionedUserNames.contains(new UserProfile(mention1)));
-        assertTrue(mentionedUserNames.contains(new UserProfile(mention2)));
+        assertTrue(mentionedUserNames.contains(mention1));
+        assertTrue(mentionedUserNames.contains(mention2));
     }
 
     @Test
@@ -48,8 +48,8 @@ public class TweetTest {
 
         List<String> mentionedUserNames = tweet.getMentionedUsernames();
         assertEquals(2, mentionedUserNames.size());
-        assertTrue(mentionedUserNames.contains(new UserProfile(mention1)));
-        assertTrue(mentionedUserNames.contains(new UserProfile(mention2)));
+        assertTrue(mentionedUserNames.contains(mention1));
+        assertTrue(mentionedUserNames.contains(mention2));
     }
 
     @Test
