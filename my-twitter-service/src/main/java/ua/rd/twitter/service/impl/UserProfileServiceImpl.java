@@ -3,7 +3,7 @@ package ua.rd.twitter.service.impl;
 import ua.rd.twitter.domain.Reply;
 import ua.rd.twitter.domain.Tweet;
 import ua.rd.twitter.domain.UserProfile;
-import ua.rd.twitter.respository.UserProfileRepository;
+import ua.rd.twitter.repository.UserProfileRepository;
 import ua.rd.twitter.service.UserProfileService;
 import ua.rd.twitter.service.exception.UserNotFoundException;
 
@@ -55,6 +55,8 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Override
     public void notifyRecipient(Reply tweet) {
+        UserProfile recipient = tweet.getRecipient();
+        recipient.getTweets().add(tweet);
     }
 
     @Override

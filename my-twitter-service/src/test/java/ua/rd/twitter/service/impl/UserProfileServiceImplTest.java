@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import ua.rd.twitter.domain.UserProfile;
-import ua.rd.twitter.respository.UserProfileRepository;
+import ua.rd.twitter.repository.UserProfileRepository;
 import ua.rd.twitter.service.UserProfileService;
 
 import java.util.Optional;
