@@ -1,4 +1,4 @@
-package ua.rd.twitter.respository;
+package ua.rd.twitter.repository;
 
 import ua.rd.twitter.domain.UserProfile;
 
