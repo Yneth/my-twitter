@@ -11,7 +11,7 @@ public class LikeTest {
         UserProfile user = new UserProfile();
         Tweet tweet = new Tweet();
 
-        Like from = Like.from(user, tweet);
+        Like from = new Like(user, tweet);
 
         assertTrue(user == from.getOwner());
         assertTrue(tweet == from.getTweet());
@@ -19,16 +19,16 @@ public class LikeTest {
 
     @Test(expected = NullPointerException.class)
     public void testFromUserShouldNotBeNull() {
-        Like.from(null, new Tweet());
+        new Like(null, new Tweet());
     }
 
     @Test(expected = NullPointerException.class)
     public void testFromTweetShouldNotBeNull() {
-        Like.from(new UserProfile(), null);
+        new Like(new UserProfile(), null);
     }
 
     @Test(expected = NullPointerException.class)
     public void testFromArgsShouldNotBeNull() {
-        Like.from(null, null);
+        new Like(null, null);
     }
 }
