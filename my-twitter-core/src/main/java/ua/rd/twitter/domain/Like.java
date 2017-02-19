@@ -13,13 +13,11 @@ public class Like {
 
     private UserProfile owner;
 
-    public static Like from(UserProfile user, Tweet tweet) {
+    public Like(UserProfile user, Tweet tweet) {
         Objects.requireNonNull(user, "User should not be null.");
         Objects.requireNonNull(tweet, "Tweet should not be null");
 
-        Like like = new Like();
-        like.setOwner(user);
-        like.setTweet(tweet);
-        return like;
+        this.owner = user;
+        this.tweet = tweet;
     }
 }
